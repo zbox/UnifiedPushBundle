@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns="http://zbox.github.io/schema/dic/unified_push"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://zbox.github.io/schema/dic/unified_push"
+    elementFormDefault="qualified">
+
+    <xsd:annotation>
+        <xsd:documentation><![CDATA[
+      Notification XML Schema, version 1.0
+      Authors: Zhuk0v Al3xand3r
+    ]]></xsd:documentation>
+    </xsd:annotation>
+</xsd:schema>

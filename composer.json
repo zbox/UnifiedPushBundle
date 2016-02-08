@@ -1,0 +1,21 @@
+{
+    "name": "zbox/unified-push-bundle",
+    "description": "Push notification bundle",
+    "keywords": ["push", "notification", "apns", "gcm", "mpns", "bundle"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Zhukov",
+            "email": "zbox82@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Zbox\\UnifiedPushBundle\\": "" }
+    },
+    "require": {
+        "php": ">=5.3.2",
+        "zbox/unified-push": "^0.9"
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="zbox.unified_push.type.device.class">Zbox\UnifiedPushBundle\Form\Type\DeviceType</parameter>
+    </parameters>
+
+    <services>
+        <service id="zbox.unified_push.form.device" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>zbox_unified_push_device_form</argument>
+            <argument>zbox_unified_push_device</argument>
+        </service>
+
+        <service id="zbox.unified_push.type.device" class="%zbox.unified_push.type.device.class%">
+            <tag name="form.type" alias="zbox_unified_push_device" />
+        </service>
+    </services>
+</container>

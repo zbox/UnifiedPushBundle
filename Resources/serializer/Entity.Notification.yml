@@ -1,0 +1,12 @@
+Zbox\UnifiedPushBundle\Entity\Notification:
+  exclusion_policy: ALL
+  xml_root_name: notification
+  properties:
+    type:
+      expose: true
+      type: string
+      groups: [standard, restapi]
+    state:
+      expose: true
+      type: string
+      groups: [restapi]

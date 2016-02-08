@@ -1,0 +1,7 @@
+zbox_push_notification_api:
+    resource: Zbox\UnifiedPushBundle\Controller\Api\Rest\NotificationController
+    type: rest
+
+zbox_push_device_api:
+    resource: Zbox\UnifiedPushBundle\Controller\Api\Rest\DeviceController
+    type: rest

@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="zbox.unified_push.manager.notification.class">Zbox\UnifiedPushBundle\Entity\Manager\NotificationManager</parameter>
+        <parameter key="zbox.unified_push.manager.device.class">Zbox\UnifiedPushBundle\Entity\Manager\DeviceManager</parameter>
+        <parameter key="zbox.unified_push.consumer.dispatcher.class">Zbox\UnifiedPushBundle\Consumer\DispatcherConsumer</parameter>
+        <parameter key="zbox.unified_push.mapper.device.class">Zbox\UnifiedPushBundle\Entity\Mapper\DeviceMapper</parameter>
+        <parameter key="zbox.unified_push.mapper.notification.class">Zbox\UnifiedPushBundle\Entity\Mapper\NotificationMapper</parameter>
+    </parameters>
+
+    <services>
+        <service id="zbox.unified_push.manager.notification" class="%zbox.unified_push.manager.notification.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+        <service id="zbox.unified_push.manager.device" class="%zbox.unified_push.manager.device.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+        <service id="zbox.unified_push.consumer.dispatcher" class="%zbox.unified_push.consumer.dispatcher.class%">
+            <argument type="service" id="zbox.unified_push.manager.notification" />
+            <argument type="service" id="zbox.unified_push.mapper.notification" />
+            <argument type="service" id="zbox.unified_push.manager.device" />
+            <argument type="service" id="zbox.unified_push.library.dispatcher" />
+        </service>
+
+        <service id="zbox.unified_push.mapper.device" class="%zbox.unified_push.mapper.device.class%" />
+
+        <service id="zbox.unified_push.mapper.notification" class="%zbox.unified_push.mapper.notification.class%">
+            <argument type="service" id="zbox.unified_push.mapper.device" />
+        </service>
+    </services>
+</container>

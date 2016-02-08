@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="zbox.unified_push.library.dispatcher.class">Zbox\UnifiedPush\Dispatcher</parameter>
+        <parameter key="zbox.unified_push.library.client_factory.class">Zbox\UnifiedPush\NotificationService\ServiceClientFactory</parameter>
+        <parameter key="zbox.unified_push.library.credentials_factory.class">Zbox\UnifiedPush\NotificationService\ServiceCredentialsFactory</parameter>
+        <parameter key="zbox.unified_push.library.credentials_mapper.class">Zbox\UnifiedPush\Utils\ClientCredentials\CredentialsMapper</parameter>
+        <parameter key="zbox.unified_push.library.notification_builder.class">Zbox\UnifiedPush\Notification\NotificationBuilder</parameter>
+        <parameter key="zbox.unified_push.library.response_handler.class">Zbox\UnifiedPush\NotificationService\ResponseHandler</parameter>
+
+        <parameter key="zbox.unified_push.library.apns.certificate" />
+        <parameter key="zbox.unified_push.library.apns.certificate_pass_phrase" />
+        <parameter key="zbox.unified_push.library.gcm.auth_token" />
+        <parameter key="zbox.unified_push.library.mpns.certificate" />
+        <parameter key="zbox.unified_push.library.mpns.certificate_pass_phrase" />
+    </parameters>
+
+    <services>
+        <service id="zbox.unified_push.library.dispatcher" class="%zbox.unified_push.library.dispatcher.class%" lazy="true">
+            <argument type="service" id="zbox.unified_push.library.client_factory" />
+            <argument type="service" id="zbox.unified_push.library.notification_builder" />
+            <argument type="service" id="zbox.unified_push.library.response_handler" />
+        </service>
+
+        <service id="zbox.unified_push.library.client_factory" class="%zbox.unified_push.library.client_factory.class%">
+            <argument type="service" id="zbox.unified_push.library.credentials_factory" />
+        </service>
+
+        <service id="zbox.unified_push.library.credentials_factory" class="%zbox.unified_push.library.credentials_factory.class%">
+            <argument type="service" id="zbox.unified_push.manager.notification" />
+        </service>
+
+        <service id="zbox.unified_push.library.credentials_mapper" class="%zbox.unified_push.library.credentials_mapper.class%" />
+
+        <service id="zbox.unified_push.library.notification_builder" class="%zbox.unified_push.library.notification_builder.class%" />
+
+        <service id="zbox.unified_push.library.response_handler" class="%zbox.unified_push.library.response_handler.class%" />
+    </services>
+</container>
